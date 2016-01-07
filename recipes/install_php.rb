@@ -22,7 +22,7 @@ when "rhel"
 		php56w-mysql
 		php56w-xml
 		php56w-pecl-redis
-		php-pear
+		php56w-pear
 	  ).each do |p|
 		package p
 	end
