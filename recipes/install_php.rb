@@ -2,6 +2,9 @@
 case node[:platform_family]
 when "rhel"
 
+	package "php55u-common" do
+		action :remove
+	end
 
 	package "php56u"
 
