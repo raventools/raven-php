@@ -13,6 +13,7 @@ when "rhel"
 		php56u-xml
 		php56u-pecl-redis
 		php56u-pear
+		php56u-mbstring
 	  ).each do |p|
 		package p
 	end
