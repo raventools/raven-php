@@ -6,3 +6,6 @@ include_recipe "raven-php::configure_php"
 
 # installs php composer
 include_recipe "raven-php::install_composer"
+
+# installs phpunit
+include_recipe "raven-php::install_phpunit"
