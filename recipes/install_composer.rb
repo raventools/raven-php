@@ -12,3 +12,19 @@ bash "update-composer" do
     EOH
 	only_if { File.exists?("/usr/bin/composer") }
 end
+
+# set up auth credentials for our local satis mirror
+directory "/var/lib/composer" do
+    owner node[:raven_php][:composer][:owner]
+    group node[:raven_php][:composer][:group]
+end
+file "/var/lib/composer/auth.json" do
+    content JSON.generate({
+                "http-basic" => {
+                    "#{node[:raven_php][:satis][:hostname]}" => {
+                        "username" => node[:raven_php][:satis][:username],
+                        "password" => node[:raven_php][:satis][:password]
+                    }
+                }
+            })
+end

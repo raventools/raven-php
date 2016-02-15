@@ -11,3 +11,21 @@ recipe "raven-php::install_php", "installs php"
 recipe "raven-php::configure_php", "configures php"
 recipe "raven-php::install_composer", "installs composer"
 recipe "raven-php::install_phpunit", "installs phpunit"
+
+attribute "raven_php",
+    :display_name => "Raven PHP",
+    :type => "hash"
+
+attribute "raven_php/satis/username",
+    :display_name => "Satis Repo Username",
+    :description => "Satis Repo Username",
+    :required => "recommended",
+    :type => "string",
+    :recipes => ["raven-deploy::install_composer"]
+
+attribute "raven_php/satis/password",
+    :display_name => "Satis Repo Password",
+    :description => "Satis Repo Password",
+    :required => "recommended",
+    :type => "string",
+    :recipes => ["raven-deploy::install_composer"]
