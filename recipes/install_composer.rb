@@ -13,6 +13,13 @@ bash "update-composer" do
 	only_if { File.exists?("/usr/bin/composer") }
 end
 
+# load auth from data bag if available
+begin
+	composer_auth = Chef::EncryptedDataBagItem.load("composerd", "auth")
+rescue
+	composer_auth = {}
+end
+
 # set up auth credentials for our local satis mirror
 directory "/var/lib/composer" do
     owner node[:raven_php][:composer][:owner]
@@ -22,8 +29,8 @@ file "/var/lib/composer/auth.json" do
     content JSON.generate({
                 "http-basic" => {
                     "#{node[:raven_php][:satis][:hostname]}" => {
-                        "username" => node[:raven_php][:satis][:username],
-                        "password" => node[:raven_php][:satis][:password]
+                        "username" => composer_auth["username"] || node[:raven_php][:satis][:username],
+                        "password" => composer_auth["password"] || node[:raven_php][:satis][:password]
                     }
                 }
             })
