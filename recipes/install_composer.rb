@@ -15,11 +15,11 @@ end
 
 # load auth from data bag if available
 begin
-	composer_auth = Chef::EncryptedDataBagItem.load("composerd", "auth")
+	composer_auth = Chef::EncryptedDataBagItem.load("composer", "auth")
 rescue
 	composer_auth = {}
 end
-composer_auth = Chef::EncryptedDataBagItem.load("composerd", "auth")
+composer_auth = Chef::EncryptedDataBagItem.load("composer", "auth", ::IO.read("/var/lib/chef/.chef/encrypted_data_bag_secret"))
 
 puts composer_auth
 
