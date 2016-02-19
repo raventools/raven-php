@@ -1,4 +1,4 @@
-include_recipe "raven-deploy"
+#include_recipe "raven-deploy"
 
 bash "install-composer" do
     code <<-EOH
