@@ -1,3 +1,5 @@
+include_recipe "raven-deploy"
+
 bash "install-composer" do
     code <<-EOH
     curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On

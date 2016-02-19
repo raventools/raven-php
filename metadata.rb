@@ -6,6 +6,8 @@ description      'Manage php installation and configuration'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.2'
 
+depends "raven-deploy"
+
 recipe "raven-php::default", "installs everything"
 recipe "raven-php::install_php", "installs php"
 recipe "raven-php::configure_php", "configures php"
