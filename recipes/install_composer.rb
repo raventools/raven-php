@@ -22,8 +22,6 @@ rescue
 	composer_auth = {}
 end
 
-composer_auth = Chef::EncryptedDataBagItem.load("composer", "auth")
-
 puts composer_auth
 
 # set up auth credentials for our local satis mirror
