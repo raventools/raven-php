@@ -23,11 +23,11 @@ attribute "raven_php/satis/username",
     :description => "Satis Repo Username",
     :required => "recommended",
     :type => "string",
-    :recipes => ["raven-deploy::install_composer"]
+    :recipes => ["raven-php::install_composer"]
 
 attribute "raven_php/satis/password",
     :display_name => "Satis Repo Password",
     :description => "Satis Repo Password",
     :required => "recommended",
     :type => "string",
-    :recipes => ["raven-deploy::install_composer"]
+    :recipes => ["raven-php::install_composer"]
