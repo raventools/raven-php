@@ -30,7 +30,7 @@ ruby_block "fetch composer auth" do
 		end
 
 		# modifies the file resource below during runtime to include the correct auth info
-		resources("file[/var/lib/composer/auth.json]").content = JSON.generate({
+		resources("file[/var/lib/composer/auth.json]").content JSON.generate({
 			"http-basic" => {
 				"#{node[:raven_php][:satis][:hostname]}" => composer_auth
 			}
