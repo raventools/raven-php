@@ -22,12 +22,11 @@ ruby_block "fetch composer auth" do
 
 			# use data bag item if available
 			composer_auth = Chef::EncryptedDataBagItem.load("composer", "auth").to_hash
-			puts "Successfully read data bag\n";
-			puts composer_auth
+			log "Successfully read data bag\n";
 
 		rescue Exception => ex
 
-			puts "Failed reading data bag: #{ex.class} #{ex.message}"
+			log "Failed reading data bag: #{ex.class} #{ex.message}"
 
 			# otherwise, fall back to chef attributes
 			composer_auth = {
@@ -35,6 +34,8 @@ ruby_block "fetch composer auth" do
 				"password" => node[:raven_php][:satis][:password]
 			}
 		end
+		
+		log composer_auth
 
 		# modifies the file resource below during runtime to include the correct auth info
 		resources("file[/var/lib/composer/auth.json]").content JSON.generate({
