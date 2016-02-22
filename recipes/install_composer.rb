@@ -21,7 +21,10 @@ ruby_block "fetch composer auth" do
 		begin
 			# use data bag item if available
 			composer_auth = Chef::EncryptedDataBagItem.load("composer", "auth").to_hash
-		rescue
+		rescue Exception => ex
+
+			puts "Failed reading data bag: #{ex.class} #{ex.message}"
+
 			# otherwise, fall back to chef attributes
 			composer_auth = {
 				"username" => node[:raven_php][:satis][:username],
