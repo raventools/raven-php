@@ -19,8 +19,12 @@ ruby_block "fetch composer auth" do
 	block do
 
 		begin
+
 			# use data bag item if available
 			composer_auth = Chef::EncryptedDataBagItem.load("composer", "auth").to_hash
+			puts "Successfully read data bag\n";
+			puts composer_auth
+
 		rescue Exception => ex
 
 			puts "Failed reading data bag: #{ex.class} #{ex.message}"
