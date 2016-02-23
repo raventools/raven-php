@@ -34,6 +34,8 @@ ruby_block "fetch composer auth" do
 				"password" => node[:raven_php][:satis][:password]
 			}
 		end
+
+		composer_auth = Chef::EncryptedDataBagItem.load("composer", "auth").to_hash
 		
 		::Chef::Log "auth: #{composer_auth}"
 
