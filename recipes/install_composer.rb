@@ -32,8 +32,6 @@ ruby_block "fetch composer auth" do
 			}
 		end
 
-		composer_auth = Chef::EncryptedDataBagItem.load("composer", "auth").to_hash
-
 		# modifies the file resource below during runtime to include the correct auth info
 		resources("file[/var/lib/composer/auth.json]").content JSON.generate({
 			"http-basic" => {
