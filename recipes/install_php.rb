@@ -12,6 +12,7 @@ when "rhel"
 		php56u-mysql
 		php56u-xml
 		php56u-pecl-redis
+		php56u-pecl-memcached
 		php56u-pear
 		php56u-mbstring
 	  ).each do |p|
