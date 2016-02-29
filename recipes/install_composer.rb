@@ -5,7 +5,8 @@ bash "install-composer" do
     curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
     mv composer.phar /usr/bin/composer
     EOH
-	not_if { File.exists?("/usr/bin/composer") }
+	# attempt to run composer, install if it fails
+	not_if 'sh -c "composer"'
 end
 
 bash "update-composer" do
