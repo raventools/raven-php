@@ -1,12 +1,7 @@
 include_recipe "raven-deploy"
 
-bash "install-composer" do
-    code <<-EOH
-    curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
-    mv composer.phar /usr/bin/composer
-    EOH
-	# attempt to run composer, install if it fails
-	not_if 'sh -c "composer"'
+package "composer" do
+	version "1.0-1"
 end
 
 bash "update-composer" do
