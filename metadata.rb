@@ -13,6 +13,7 @@ recipe "raven-php::install_php", "installs php"
 recipe "raven-php::configure_php", "configures php"
 recipe "raven-php::install_composer", "installs composer"
 recipe "raven-php::install_phpunit", "installs phpunit"
+recipe "raven-php::install_devtools", "installs dev and build tools"
 
 attribute "raven_php",
     :display_name => "Raven PHP",
