@@ -3,6 +3,7 @@ package "phar-composer" do
 end
 
 file "/usr/bin/build_php_artifact" do
+	mode 0755
 	content <<-EOH
 #!/bin/bash
 
