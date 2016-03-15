@@ -1,0 +1,41 @@
+#!/bin/bash -e
+
+prefix=$1
+composer_json=$2
+outdir=`readlink -f "$3"`
+bucket="raven-deploy"
+
+composer_lock=`dirname $composer_json`/`basename $composer_json .json`.lock
+checksum=`md5sum $composer_lock | cut -d' ' -f1`
+artifact_filename="${prefix}-${checksum}.tar"
+artifact_path="${outdir}/${artifact_filename}"
+artifact_s3="s3://${bucket}/composer/${prefix}/${artifact_filename}"
+
+echo "artifact $artifact_path"
+
+# if we don't already have a matching artifact, build one
+if [ ! -f "$artifact_path" ]; then
+	tmpdir=`mktemp -d`
+
+	cp "$composer_json" "$tmpdir"
+	cp "$composer_lock" "$tmpdir"
+
+	pushd "$tmpdir"
+	COMPOSER_HOME=/var/lib/composer composer install
+	tar -c vendor --exclude-vcs > "$artifact_path"
+	popd
+
+	rm -rf $tmpdir
+else
+	echo "artifact exists. doing nothing"
+fi
+
+
+if ! aws s3 ls "$artifact_s3"; then
+	echo "uploading ${artifact_s3}"
+	aws s3 cp "${artifact_path}" "${artifact_s3}"
+else
+	echo "artifact already in s3. not uploading"
+fi
+
+#vim:set ft=sh:
