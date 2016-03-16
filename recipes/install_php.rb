@@ -11,10 +11,11 @@ when "rhel"
 	%w(	php56u-gd
 		php56u-mysql
 		php56u-xml
-		php56u-pecl-redis
-		php56u-pecl-memcached
 		php56u-pear
 		php56u-mbstring
+		php56u-pecl-redis
+		php56u-pecl-memcached
+		php56u-pecl-yaml
 	  ).each do |p|
 		package p
 	end
