@@ -13,6 +13,7 @@ when "rhel"
 		php56u-xml
 		php56u-pear
 		php56u-mbstring
+		php56u-gmp
 		php56u-pecl-redis
 		php56u-pecl-memcached
 		php56u-pecl-yaml
