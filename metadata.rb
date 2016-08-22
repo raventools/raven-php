@@ -19,16 +19,18 @@ attribute "raven_php",
     :display_name => "Raven PHP",
     :type => "hash"
 
-attribute "raven_php/satis/username",
-    :display_name => "Satis Repo Username",
-    :description => "Satis Repo Username",
+attribute "raven_php/composer/owner",
+    :display_name => "Composer directory owner",
+    :description => "Composer directory owner",
     :required => "recommended",
+	:default => "root",
     :type => "string",
     :recipes => ["raven-php::install_composer"]
 
-attribute "raven_php/satis/password",
-    :display_name => "Satis Repo Password",
-    :description => "Satis Repo Password",
+attribute "raven_php/composer/group",
+    :display_name => "Composer directory group",
+    :description => "Composer directory groyp",
     :required => "recommended",
+	:default => "root",
     :type => "string",
     :recipes => ["raven-php::install_composer"]
