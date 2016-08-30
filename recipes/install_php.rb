@@ -18,6 +18,7 @@ when "rhel"
 		php56u-pecl-memcached
 		php56u-pecl-yaml
 		php56u-xmlrpc
+		php56u-soap
 	  ).each do |p|
 		package p
 	end
