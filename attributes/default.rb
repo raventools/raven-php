@@ -7,3 +7,13 @@ default[:raven_php][:composer][:group] = "root"
 default[:raven_php][:satis][:hostname] = "ravenapp-composer.raventools.com"
 default[:raven_php][:satis][:username] = ""
 default[:raven_php][:satis][:password] = ""
+
+default[:raven_php][:xdebug][:default_enable] = 0
+default[:raven_php][:xdebug][:idekey] = "vagrant"
+default[:raven_php][:xdebug][:remote_enable] = 0
+default[:raven_php][:xdebug][:remote_autostart] = 0
+default[:raven_php][:xdebug][:remote_connect_back] = 0
+default[:raven_php][:xdebug][:remote_port] = 9000
+default[:raven_php][:xdebug][:remote_handler] = "dbgp"
+default[:raven_php][:xdebug][:remote_log] = "/var/log/xdebug.log"
+default[:raven_php][:xdebug][:remote_host] = "10.0.2.2"
