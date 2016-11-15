@@ -13,5 +13,4 @@ template "/etc/php.d/60-xdebug_config.ini" do
 			:remote_log => node[:raven_php][:xdebug][:remote_log],
 			:remote_host => node[:raven_php][:xdebug][:remote_host]
 			})
-	notifies :restart, "service[httpd]", :delayed
 end
