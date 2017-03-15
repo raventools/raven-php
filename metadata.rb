@@ -43,4 +43,4 @@ attribute "raven_php/php_conf",
 	:required => "recommended",
 	:type => "array",
 	:default => ["date.timezone = US/Eastern","memory_limit = 128M","allow_url_fopen=1","expose_php = off"],
-	:recipes => ["raven_php::configure_php","raven-php::default","raven-php::set_vars"]
+	:recipes => ["raven-php::configure_php","raven-php::default","raven-php::set_vars"]
