@@ -6,7 +6,9 @@ end
 
 bash "update-composer" do
     code <<-EOH
-    php -d allow_url_fopen=On /usr/bin/composer self-update
+    curl -O "https://getcomposer.org/download/1.10.24/composer.phar"
+    chmod a+x composer.phar
+    sudo mv composer.phar /usr/local/composer
     EOH
 	only_if { File.exists?("/usr/bin/composer") }
 end
